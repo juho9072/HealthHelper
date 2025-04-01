@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.healthhelper.ui.theme.HealthHelperTheme
 //aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-//aaaaaaaaaaaaaaaaa
+//aaaaaaaaaaa
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
