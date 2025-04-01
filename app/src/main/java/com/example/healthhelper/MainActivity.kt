@@ -43,6 +43,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     HealthHelperTheme {
         Greeting("Android")
-        //주호씨에게 푸시함
+        //이거 이상함
     }
 }
