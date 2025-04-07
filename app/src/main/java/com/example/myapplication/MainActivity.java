@@ -1,4 +1,5 @@
 //캡스톤디자인1_헬스헬퍼
+//test
 package com.example.myapplication;
 
 import android.os.Bundle;
