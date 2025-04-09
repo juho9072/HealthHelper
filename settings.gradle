@@ -1,4 +1,4 @@
-pluginManagement {
+qpluginManagement {
     repositories {
         google {
             content {
