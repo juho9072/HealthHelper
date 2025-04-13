@@ -1,19 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/login_gradient">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="60dp"
+        android:paddingBottom="30dp"
+        android:gravity="center_horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- 인삿말 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다시 오신 것을 환영합니다"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/pretendard_regular"
+            android:gravity="center"
+            android:layout_marginBottom="30dp" />
+
+        <!-- 입력 필드 -->
+        <EditText
+            android:layout_width="295dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/rounded_input"
+            android:fontFamily="@font/pretendard_regular"
+            android:gravity="center"
+            android:hint="이메일 또는 사용자 이름"
+            android:padding="16dp"
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="295dp"
+            android:layout_height="56dp"
+            android:hint="비밀번호"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:background="@drawable/rounded_input"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/pretendard_regular"
+            android:layout_marginBottom="32dp" />
+
+        <!-- 로그인 버튼 -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="295dp"
+            android:layout_height="56dp"
+            android:text="로그인"
+            android:textSize="24sp"
+            android:fontFamily="@font/pretendard_regular"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:background="@drawable/rounded_button_blue"
+            android:layout_marginBottom="32dp" />
+
+        <!-- 소셜 로그인 버튼 (이미지) -->
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="32dp"
+            android:weightSum="3">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_google"
+                android:contentDescription="Google 로그인" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_kakao"
+                android:contentDescription="kakao 로그인" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_naver"
+                android:contentDescription="naver 로그인" />
+        </LinearLayout>
+
+        <!-- 구분선 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="12dp" />
+
+        <!-- 안내문 + 회색 회원가입 버튼 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계정이 없으신가요?"
+            android:textSize="14sp"
+            android:fontFamily="@font/pretendard_regular"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="295dp"
+            android:layout_height="56dp"
+            android:text="회원가입"
+            android:textSize="24sp"
+            android:fontFamily="@font/pretendard_regular"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:background="@drawable/rounded_button_gray" />
+    </LinearLayout>
+</ScrollView>
