@@ -19,15 +19,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="다시 오신 것을 환영합니다"
-            android:textSize="24sp"
+            android:text="다시 오신 것을 \n환영합니다"
+            android:textSize="40sp"
             android:textStyle="bold"
             android:fontFamily="@font/pretendard_regular"
             android:gravity="center"
             android:layout_marginBottom="30dp" />
 
         <!-- 입력 필드 -->
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="295dp"
             android:layout_height="56dp"
             android:layout_marginBottom="12dp"
@@ -35,13 +35,17 @@
             android:fontFamily="@font/pretendard_regular"
             android:gravity="center"
             android:hint="이메일 또는 사용자 이름"
+            android:textColor="#000000"
+            android:hintTextColor="#888888"
             android:padding="16dp"
             android:textSize="16sp" />
+
 
         <EditText
             android:layout_width="295dp"
             android:layout_height="56dp"
             android:hint="비밀번호"
+            android:textColor="#000000"
             android:gravity="center"
             android:inputType="textPassword"
             android:background="@drawable/rounded_input"
