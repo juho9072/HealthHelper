@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="홈" />
+
+    <item
+        android:id="@+id/nav_routine"
+        android:icon="@drawable/ic_routine"
+        android:title="루틴" />
+
+    <item
+        android:id="@+id/nav_record"
+        android:icon="@drawable/ic_record"
+        android:title="기록" />
+
+    <item
+        android:id="@+id/nav_mypage"
+        android:icon="@drawable/ic_mypage"
+        android:title="마이페이지" />
+</menu>
