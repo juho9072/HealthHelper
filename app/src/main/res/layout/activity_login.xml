@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <!-- 배경 이미지 -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_background"
+        android:contentDescription="@string/app_name" />
+
+    <!-- 어두운 오버레이 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
+
+    <!-- 로그인 폼 -->
+    <LinearLayout
+        android:id="@+id/loginForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="48dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp" />
+
+        <EditText
+            android:id="@+id/idText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="아이디"
+            android:background="@drawable/login_round"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#CCCCCC"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/passwordText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="비밀번호"
+            android:background="@drawable/login_round"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#CCCCCC"
+            android:inputType="textPassword"
+            android:drawableEnd="@drawable/login_eye"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="로그인"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:background="@drawable/login_button" />
+    </LinearLayout>
+
+    <!-- 하단 텍스트 및 체크박스 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/loginForm"
+        android:paddingLeft="32dp"
+        android:gravity="start"> <!-- 왼쪽 정렬로 변경 -->
+
+        <!-- 수정된 CheckBox -->
+        <CheckBox
+            android:id="@+id/saveEmailCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:minWidth="48dp"
+            android:padding="8dp"
+            android:text="아이디 저장"
+            android:textColor="#BDE9F1"
+            android:buttonTint="#FFFFFF" /> <!-- 체크박스 색상을 흰색으로 설정 -->
+
+        <TextView
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디/비밀번호 찾기"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개인정보처리방침"
+            android:textColor="#BDE9F1"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</RelativeLayout>
