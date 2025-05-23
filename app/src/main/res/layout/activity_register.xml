@@ -71,18 +71,33 @@
                 android:textColor="#FFFFFF" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/passwordText"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="비밀번호"
-            android:background="@drawable/login_round"
-            android:padding="10dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#CCCCCC"
-            android:inputType="textPassword"
-            android:drawableEnd="@drawable/login_eye"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="24dp">
+
+            <EditText
+                android:id="@+id/passwordText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="비밀번호"
+                android:background="@drawable/login_round"
+                android:padding="10dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:inputType="textPassword" />
+
+            <ImageButton
+                android:id="@+id/btn_toggle_register_pw"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/login_eye_off"
+                android:contentDescription="비밀번호 보기 전환" />
+        </RelativeLayout>
 
         <EditText
             android:id="@+id/emailText"
