@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
@@ -16,6 +17,7 @@
 
     <!-- 어두운 오버레이 -->
     <View
+        android:id="@+id/overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#80000000" />
@@ -31,6 +33,7 @@
         android:layout_marginTop="48dp">
 
         <TextView
+            android:id="@+id/titleLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="로그인"
@@ -51,18 +54,33 @@
             android:inputType="textEmailAddress"
             android:layout_marginBottom="16dp" />
 
-        <EditText
-            android:id="@+id/passwordText"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="비밀번호"
-            android:background="@drawable/login_round"
-            android:padding="10dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#CCCCCC"
-            android:inputType="textPassword"
-            android:drawableEnd="@drawable/login_eye"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="16dp">
+
+            <EditText
+                android:id="@+id/passwordText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="비밀번호"
+                android:background="@drawable/login_round"
+                android:padding="10dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:inputType="textPassword" />
+
+            <ImageButton
+                android:id="@+id/btn_toggle_pw"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/login_eye_off"
+                android:contentDescription="비밀번호 보기 전환" />
+        </RelativeLayout>
 
         <Button
             android:id="@+id/loginButton"
@@ -72,49 +90,97 @@
             android:textSize="16sp"
             android:textColor="#000000"
             android:background="@drawable/login_button" />
+
     </LinearLayout>
 
-    <!-- 하단 텍스트 및 체크박스 -->
+    <!-- 소셜 로그인 영역: Google 버튼 바로 아래, Kakao 버튼 그 다음 -->
     <LinearLayout
+        android:id="@+id/socialLoginContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/loginForm"
         android:paddingLeft="32dp"
-        android:gravity="start"> <!-- 왼쪽 정렬로 변경 -->
+        android:paddingRight="32dp"
+        android:layout_marginTop="16dp">
 
-        <!-- 수정된 CheckBox -->
-        <CheckBox
-            android:id="@+id/saveEmailCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:minWidth="48dp"
-            android:padding="8dp"
-            android:text="아이디 저장"
-            android:textColor="#BDE9F1"
-            android:buttonTint="#FFFFFF" /> <!-- 체크박스 색상을 흰색으로 설정 -->
+        <!-- Google Sign-In Button -->
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btn_google_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:id="@+id/registerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="회원가입"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="8dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="아이디/비밀번호 찾기"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="4dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="개인정보처리방침"
-            android:textColor="#BDE9F1"
-            android:layout_marginTop="8dp" />
+        <!-- Kakao Login Button -->
+        <ImageButton
+            android:id="@+id/btn_login_kakao"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_kakao"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="카카오 로그인"
+            android:layout_marginBottom="16dp" />
     </LinearLayout>
+
+    <!-- 체크박스 및 하단 링크 -->
+    <!-- 아이디 저장 -->
+    <CheckBox
+        android:id="@+id/check_save_id"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_below="@id/socialLoginContainer"
+        android:layout_marginTop="0dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:gravity="center_vertical"
+        android:text="아이디 저장"
+        android:textColor="#FFFFFF"
+        android:buttonTint="#FFFFFF" />
+
+    <!-- 개인정보처리방침 동의 -->
+    <CheckBox
+        android:id="@+id/check_policy_agree"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_below="@id/check_save_id"
+        android:layout_marginTop="4dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:gravity="center_vertical"
+        android:text="개인정보처리방침에 동의"
+        android:textColor="#FFFFFF"
+        android:buttonTint="#FFFFFF" />
+
+    <!-- 회원가입 -->
+    <TextView
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/check_policy_agree"
+        android:layout_marginTop="4dp"
+        android:text="회원가입"
+        android:textColor="#FFFFFF" />
+
+    <!-- 아이디/비밀번호 찾기 -->
+    <TextView
+        android:id="@+id/findAccountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/registerButton"
+        android:layout_marginTop="4dp"
+        android:text="아이디/비밀번호 찾기"
+        android:textColor="#FFFFFF" />
+
+    <!-- 개인정보처리방침 보기 -->
+    <TextView
+        android:id="@+id/privacyPolicyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/findAccountText"
+        android:layout_marginTop="4dp"
+        android:text="개인정보처리방침 보기"
+        android:textColor="#BDE9F1" />
+
 </RelativeLayout>

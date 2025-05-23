@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -22,7 +24,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private String userGender;
     private AlertDialog dialog;
-    private boolean validate = false; // 오타 수정
+    private boolean validate = false;
+    private boolean isPwVisible = false; // 👁 비밀번호 보기 상태 저장
+    private ImageButton btnTogglePw;     // 👁 눈모양 버튼
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,26 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText passwordText = findViewById(R.id.passwordText);
         final EditText emailText = findViewById(R.id.emailText);
 
+        // 👁 눈모양 버튼 연결 및 초기 설정
+        btnTogglePw = findViewById(R.id.btn_toggle_register_pw);
+        passwordText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        passwordText.setSelection(passwordText.length());
+        btnTogglePw.setImageResource(R.drawable.login_eye); // 기본은 비밀번호 숨김
+        isPwVisible = false;
+
+        btnTogglePw.setOnClickListener(v -> {
+            if (isPwVisible) {
+                passwordText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                btnTogglePw.setImageResource(R.drawable.login_eye);
+            } else {
+                passwordText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                btnTogglePw.setImageResource(R.drawable.login_eye_off);
+            }
+            passwordText.setSelection(passwordText.length());
+            isPwVisible = !isPwVisible;
+        });
+
+        // 성별 라디오 그룹 설정
         RadioGroup genderGroup = findViewById(R.id.genderGroup);
         int genderGroupID = genderGroup.getCheckedRadioButtonId();
         if (genderGroupID != -1) {
@@ -45,12 +69,12 @@ public class RegisterActivity extends AppCompatActivity {
             userGender = genderButton.getText().toString();
         });
 
+        // 아이디 중복 확인
         final Button validateButton = findViewById(R.id.validateButton);
         validateButton.setOnClickListener(view -> {
             String userID = idText.getText().toString();
-            if (validate) {
-                return;
-            }
+            if (validate) return;
+
             if (userID.equals("")) {
                 dialog = new AlertDialog.Builder(RegisterActivity.this)
                         .setMessage("아이디는 빈 칸일 수 없습니다.")
@@ -91,6 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
             queue.add(validateRequest);
         });
 
+        // 회원가입 버튼 처리
         Button registerButton = findViewById(R.id.registerButton);
         registerButton.setOnClickListener(view -> {
             String userID = idText.getText().toString();
