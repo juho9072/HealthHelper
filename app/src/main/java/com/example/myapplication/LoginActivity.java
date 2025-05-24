@@ -1,6 +1,11 @@
 //main
 package com.example.myapplication;
 
+//import android.widget.Toast; // 테스트용
+//import android.util.Log; // 오류확인용
+
+
+import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -55,6 +60,20 @@ public class LoginActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
 
                             if(success) {
+                                //오류확인코드
+                                //Log.d("서버응답", jsonResponse.toString());
+
+                                //String userEmail = jsonResponse.getString("userEmail");
+                               //SharedPreferences prefs = getSharedPreferences("userInfo", MODE_PRIVATE);
+                                //SharedPreferences.Editor editor = prefs.edit();
+                                //editor.putString("userEmail", userEmail);
+                                //editor.apply();
+
+                                SharedPreferences prefs = getSharedPreferences("userInfo", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = prefs.edit();
+                                editor.putString("userID", userID); // <- 로그인에 입력한 userID 저장
+                                editor.apply();
+
                                 dialog = new AlertDialog.Builder(LoginActivity.this)
                                         .setMessage("로그인에 성공했습니다.")
                                         .setPositiveButton("확인", null)
@@ -73,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         } catch (Exception e){
                             e.printStackTrace();
+                            //Toast.makeText(LoginActivity.this, "이메일 파싱 오류: " + e.getMessage(), Toast.LENGTH_SHORT).show(); // 테스트용
                         }
                     }
                 };
