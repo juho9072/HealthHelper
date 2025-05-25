@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SpinnerPopupTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">#232429</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+    </style>
+
+
+</resources>

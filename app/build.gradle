@@ -1,5 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("org.jetbrains.kotlin.android") version "1.8.21"
+    id 'com.google.gms.google-services' apply true
+
+
+
 }
 
 android {
@@ -13,7 +18,10 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                KAKAO_APP_KEY: "67863ba4688d4a947e7874d248ebb770"
+        ]
     }
 
     buildTypes {
@@ -29,14 +37,26 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+    implementation 'com.android.volley:volley:1.2.1'
 
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
-    testImplementation libs.junit
-    androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
 
-    implementation 'com.android.volley:volley:1.2.1'
+    // Google Sign-In
+    implementation "com.google.android.gms:play-services-auth:21.2.0"
+    // Volley
+    implementation "com.android.volley:volley:1.2.1"
+    implementation 'com.google.firebase:firebase-auth:23.0.0'
+    // Kotlin stdlib: 카탈로그 대신 직접 버전 명시
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.21"
+
+    // Kakao User SDK
+    implementation "com.kakao.sdk:v2-user:2.14.0"
+    implementation "com.kakao.sdk:v2-auth:2.14.0"
+
+
 }

@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="운동"
+            android:text="기록"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:paddingTop="18dp"
@@ -49,7 +49,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="휴식시간 종료"
+                android:text="운동 휴식시간 종료"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"/>
             <Switch
@@ -102,7 +102,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="커뮤니티"
+            android:text="루틴"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:paddingTop="18dp"
@@ -118,7 +118,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="내 게시글에 댓글"
+                android:text="내 루틴에 댓글"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"/>
             <Switch
@@ -138,7 +138,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="내 게시글에 추천"
+                android:text="내 루틴에 추천"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"/>
             <Switch
@@ -148,45 +148,7 @@
                 android:checked="true"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="내 댓글에 답글"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"/>
-            <Switch
-                android:id="@+id/switch_my_comment_reply"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"/>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="내 댓글에 추천"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"/>
-            <Switch
-                android:id="@+id/switch_my_comment_like"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"/>
-        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

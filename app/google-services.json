@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "783907667363",
+    "project_id": "healthhelper-67f2e",
+    "storage_bucket": "healthhelper-67f2e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783907667363:android:a91b485bb3652e9af3ae16",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783907667363-llpqqdrei5ts5c8l191eskcg2n9ahgvc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "9b5e9e1f10ee848eac968866e78ea3627ff3eaee"
+          }
+        },
+        {
+          "client_id": "783907667363-s864kj7vl0gogc2p9seu758rgra72bj9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMKwOncrRKZek5nGQJcVw_werC5BKXFso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783907667363-s864kj7vl0gogc2p9seu758rgra72bj9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,7 +11,6 @@
         android:layout_marginTop="56dp"
         android:padding="24dp">
 
-
         <TextView
             android:id="@+id/text_setting_title"
             android:layout_width="wrap_content"
@@ -21,6 +20,45 @@
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:paddingBottom="32dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="운동 수준"
+                android:textColor="#DDDDDD"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/text_fitness_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(미설정)"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_gravity="center_vertical"/>
+
+            <Button
+                android:id="@+id/btn_go_fitness"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_button"
+                android:layout_marginTop="6dp"
+                android:text="운동 수준 설정"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#333"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,41 +82,39 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"/>
         </LinearLayout>
-        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#333"/>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
-            <TextView
+            <Button
+                android:id="@+id/btn_change_idpw"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_button"
+                android:padding="10dp"
+                android:text="pw 변경"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_leave"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="운동 수준"
-                android:textColor="#DDDDDD"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/text_level"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="운동수준"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"/>
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@drawable/ic_arrow_right"
-                android:tint="#FFFFFF"
-                android:paddingStart="8dp"
-                android:paddingLeft="8dp" />
+                android:background="@drawable/rounded_button"
+                android:padding="10dp"
+                android:text="회원 탈퇴"
+                android:textSize="16sp" />
         </LinearLayout>
         <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#333"/>
-
         <LinearLayout
+            android:id="@+id/layout_body_info"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:gravity="center_vertical"
@@ -125,7 +161,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_email"
+                android:id="@+id/text_user_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="example@email.com"
@@ -198,3 +234,8 @@
         <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#333"/>
     </LinearLayout>
 </ScrollView>
+
+
+
+
+
