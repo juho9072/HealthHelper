@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_routine_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="루틴 이름" />
+
+        <EditText
+            android:id="@+id/et_routine_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="부위 태그 (ex. 가슴, 등 등)" />
+
+        <EditText
+            android:id="@+id/et_routine_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="루틴 설명"
+            android:minLines="3" />
+    </LinearLayout>
+</ScrollView>
