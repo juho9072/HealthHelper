@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/routineNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="루틴 이름"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/routineTagText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그"
+            android:textSize="14sp"
+            android:textColor="#777777" />
+
+        <TextView
+            android:id="@+id/routineDescText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="루틴 설명"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

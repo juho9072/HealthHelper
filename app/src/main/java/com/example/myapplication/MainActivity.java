@@ -4,12 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-// 너가 만든 Fragment들도
-import com.example.myapplication.HomeFragment;
-import com.example.myapplication.RoutineFragment;
-import com.example.myapplication.RecordFragment;
-import com.example.myapplication.MypageFragment;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
