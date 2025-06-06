@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NotificationActivity extends AppCompatActivity {
@@ -16,53 +17,61 @@ public class NotificationActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences("notification_prefs", MODE_PRIVATE);
 
-        // 스위치 목록 (필요하면 계속 추가)
         Switch switchAll = findViewById(R.id.switch_notification_all);
         Switch switchRestEnd = findViewById(R.id.switch_rest_end);
         Switch switchWorkoutIncomplete = findViewById(R.id.switch_workout_incomplete);
         Switch switchWorkoutSchedule = findViewById(R.id.switch_workout_schedule);
         Switch switchMyPostComment = findViewById(R.id.switch_my_post_comment);
         Switch switchMyPostLike = findViewById(R.id.switch_my_post_like);
+        Switch switchInquiryAnswer = findViewById(R.id.switch_inquiry_answer_alert); // 추가
 
-
-        // 1. 스위치 상태 불러와서 반영
         switchAll.setChecked(prefs.getBoolean("all", true));
         switchRestEnd.setChecked(prefs.getBoolean("rest_end", true));
         switchWorkoutIncomplete.setChecked(prefs.getBoolean("workout_incomplete", true));
         switchWorkoutSchedule.setChecked(prefs.getBoolean("workout_schedule", true));
         switchMyPostComment.setChecked(prefs.getBoolean("my_post_comment", true));
         switchMyPostLike.setChecked(prefs.getBoolean("my_post_like", true));
+        switchInquiryAnswer.setChecked(prefs.getBoolean("inquiry_answer", true)); // 추가
 
-
-        // 2. 스위치 바뀌면 저장 (각 스위치별로)
-        switchAll.setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) ->
-                prefs.edit().putBoolean("all", isChecked).apply()
-        );
-        switchRestEnd.setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) ->
+        switchRestEnd.setOnCheckedChangeListener((buttonView, isChecked) ->
                 prefs.edit().putBoolean("rest_end", isChecked).apply()
         );
-        switchWorkoutIncomplete.setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) ->
+        switchWorkoutIncomplete.setOnCheckedChangeListener((buttonView, isChecked) ->
                 prefs.edit().putBoolean("workout_incomplete", isChecked).apply()
         );
-        switchWorkoutSchedule.setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) ->
+        switchWorkoutSchedule.setOnCheckedChangeListener((buttonView, isChecked) ->
                 prefs.edit().putBoolean("workout_schedule", isChecked).apply()
         );
-        switchMyPostComment.setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) ->
+        switchMyPostComment.setOnCheckedChangeListener((buttonView, isChecked) ->
                 prefs.edit().putBoolean("my_post_comment", isChecked).apply()
         );
-        switchMyPostLike.setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) ->
+        switchMyPostLike.setOnCheckedChangeListener((buttonView, isChecked) ->
                 prefs.edit().putBoolean("my_post_like", isChecked).apply()
         );
+        switchInquiryAnswer.setOnCheckedChangeListener((buttonView, isChecked) ->
+                prefs.edit().putBoolean("inquiry_answer", isChecked).apply()
+        );
 
-
-        // (옵션) 전체 알림 끄면 하위 스위치도 모두 OFF
         switchAll.setOnCheckedChangeListener((buttonView, isChecked) -> {
             prefs.edit().putBoolean("all", isChecked).apply();
+
             switchRestEnd.setChecked(isChecked);
+            prefs.edit().putBoolean("rest_end", isChecked).apply();
+
             switchWorkoutIncomplete.setChecked(isChecked);
+            prefs.edit().putBoolean("workout_incomplete", isChecked).apply();
+
             switchWorkoutSchedule.setChecked(isChecked);
+            prefs.edit().putBoolean("workout_schedule", isChecked).apply();
+
             switchMyPostComment.setChecked(isChecked);
+            prefs.edit().putBoolean("my_post_comment", isChecked).apply();
+
             switchMyPostLike.setChecked(isChecked);
+            prefs.edit().putBoolean("my_post_like", isChecked).apply();
+
+            switchInquiryAnswer.setChecked(isChecked);
+            prefs.edit().putBoolean("inquiry_answer", isChecked).apply();
         });
     }
 }

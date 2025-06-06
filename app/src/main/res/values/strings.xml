@@ -14,12 +14,30 @@
 
     <string name="kakao_native_app_key">67863ba4688d4a947e7874d248ebb770</string>
 
+    <!-- 마이페이지 설정-->
     <string-array name="fitness_level_array">
         <item>입문자</item>
         <item>초보자</item>
         <item>중급자</item>
         <item>상급자</item>
         <item>인플루언서</item>
+    </string-array>
+
+    <!-- 루틴 생성하기 설정-->
+    <string-array name="level_array">
+        <item>입문자</item>
+        <item>초급자</item>
+        <item>중급자</item>
+        <item>상급자</item>
+    </string-array>
+
+    <!-- 태그 선택하기 설정-->
+    <string-array name="tag_array">
+        <item>이두</item>
+        <item>삼두</item>
+        <item>등</item>
+        <item>어깨</item>
+        <item>하체</item>
     </string-array>
 
 </resources>

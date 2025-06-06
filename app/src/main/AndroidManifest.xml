@@ -4,6 +4,8 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
 
     <application
         android:name=".MyApp"
@@ -74,6 +76,16 @@
         <activity android:name=".FitnessLevelActivity"/>
         <activity android:name=".SettingActivity"/>
         <activity android:name=".BodyInfoActivity" />
+        <activity android:name=".RoutineUploadActivity" />
+        <activity android:name=".RoutineStartActivity" />
+        <activity android:name=".RoutineDetailActivity" />
+        <activity android:name=".InquiryActivity"/>
+        <activity android:name=".InquiryDetailActivity" />
+        <activity android:name=".MyInquiryActivity" />
+
+
+
+
 
 
     </application>

@@ -14,6 +14,8 @@
         android:hint="키 (cm)"
         android:inputType="number"
         android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:theme="@null"
         android:backgroundTint="#FFFFFF"
         android:layout_marginBottom="16dp" />
 
@@ -24,7 +26,9 @@
         android:hint="몸무게 (kg)"
         android:inputType="number"
         android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:backgroundTint="#FFFFFF"
+        android:theme="@null"
         android:layout_marginBottom="24dp" />
 
     <Button
@@ -33,5 +37,5 @@
         android:layout_height="wrap_content"
         android:text="저장"
         android:background="@drawable/rounded_button"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000000" />
 </LinearLayout>

@@ -60,6 +60,13 @@ public class SettingActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        TextView contactUs = findViewById(R.id.text_contact_us);
+        contactUs.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingActivity.this, MyInquiryActivity.class);
+            startActivity(intent);
+        });
+
+
         LinearLayout layoutBodyInfo = findViewById(R.id.layout_body_info);
         layoutBodyInfo.setOnClickListener(v -> {
             Intent intent = new Intent(SettingActivity.this, BodyInfoActivity.class);
@@ -122,11 +129,11 @@ public class SettingActivity extends AppCompatActivity {
                             textBody.setText(info);
                             textFitnessLevel.setText(fitnessLevel);
                         } else {
-                            textBody.setText("정보 없음");
+                            textBody.setText("미설정");
                             textFitnessLevel.setText("미설정");
                         }
                     } catch (Exception e) {
-                        textBody.setText("파싱 오류");
+                        textBody.setText("미설정");
                         textFitnessLevel.setText("미설정");
                         e.printStackTrace();
                     }
