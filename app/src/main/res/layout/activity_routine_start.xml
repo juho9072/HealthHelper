@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#232429">
+
+    <!-- 흰색 구분선과 어두운 배경 설정된 ListView -->
+    <ListView
+        android:id="@+id/routineListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#FFFFFF"
+        android:dividerHeight="1dp" />
+</LinearLayout>

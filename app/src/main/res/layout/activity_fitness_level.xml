@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#232429"
+    android:gravity="center"
+    android:padding="24dp">
+
+
+    <Spinner
+        android:id="@+id/spinner_fitness_level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/fitness_level_array"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btn_save_level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="운동수준 저장"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded_button2"
+        />
+
+</LinearLayout>

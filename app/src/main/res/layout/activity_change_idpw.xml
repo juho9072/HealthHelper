@@ -1,0 +1,47 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#232429"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="비밀번호 변경"
+        android:textSize="22sp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:paddingBottom="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"/>
+
+    <EditText
+        android:id="@+id/edit_id"
+        android:hint="아이디를 입력하세요."
+        android:textColor="#fff"
+        android:background="#444"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginBottom="18dp"/>
+
+    <EditText
+        android:id="@+id/edit_new_pw"
+        android:hint="새 비밀번호 입력"
+        android:inputType="textPassword"
+        android:textColor="#fff"
+        android:background="#444"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginBottom="18dp"/>
+
+    <Button
+        android:id="@+id/btn_change"
+        android:text="변경"
+        android:backgroundTint="#2196f3"
+        android:textColor="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

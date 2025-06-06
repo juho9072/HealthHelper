@@ -1,3 +1,43 @@
 <resources>
     <string name="app_name">My Application</string>
+
+    <!-- Android OAuth 클라이언트(ID+SHA-1) -->
+    <string name="server_client_id">
+  783907667363-llpqqdrei5ts5c8l191eskcg2n9ahgvc.apps.googleusercontent.com
+</string>
+
+    <!-- Web 애플리케이션용 클라이언트 ID -->
+    <string name="default_web_client_id">
+  783907667363-llpqqdrei5ts5c8l191eskcg2n9ahgvc.apps.googleusercontent.com</string>
+
+    <!-- 카카오 네이티브 앱 키 -->
+
+    <string name="kakao_native_app_key">67863ba4688d4a947e7874d248ebb770</string>
+
+    <!-- 마이페이지 설정-->
+    <string-array name="fitness_level_array">
+        <item>입문자</item>
+        <item>초보자</item>
+        <item>중급자</item>
+        <item>상급자</item>
+        <item>인플루언서</item>
+    </string-array>
+
+    <!-- 루틴 생성하기 설정-->
+    <string-array name="level_array">
+        <item>입문자</item>
+        <item>초급자</item>
+        <item>중급자</item>
+        <item>상급자</item>
+    </string-array>
+
+    <!-- 태그 선택하기 설정-->
+    <string-array name="tag_array">
+        <item>이두</item>
+        <item>삼두</item>
+        <item>등</item>
+        <item>어깨</item>
+        <item>하체</item>
+    </string-array>
+
 </resources>
