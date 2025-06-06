@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#232429">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <!-- 상단 타이틀 -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="루틴 생성하기"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp" />
+
+        <!-- 제목 입력 -->
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="제목 입력"
+            android:textColorHint="#AAAAAA"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_edittext"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 유튜브 링크 입력 -->
+        <EditText
+            android:id="@+id/etYoutubeLink"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="유튜브 링크 입력"
+            android:textColorHint="#AAAAAA"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_edittext"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 난이도 안내 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="난이도를 선택해주세요"
+            android:textColor="#CCCCCC"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- 난이도 선택 -->
+        <Spinner
+            android:id="@+id/spinnerLevel"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 태그 안내 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="운동 부위를 선택해주세요"
+            android:textColor="#CCCCCC"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- 태그 다중 선택 -->
+        <Button
+            android:id="@+id/btnSelectTags"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="태그 선택"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_blue"
+            android:layout_marginBottom="32dp" />
+
+        <!-- 등록 버튼 -->
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="확인"
+            android:textColor="@color/black"
+            android:background="@drawable/button_white" />
+    </LinearLayout>
+</ScrollView>

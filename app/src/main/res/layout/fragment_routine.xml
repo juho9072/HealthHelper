@@ -1,12 +1,95 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="#232429">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="루틴"
-        android:textSize="24sp"
-        android:layout_gravity="center" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="루틴"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- 버튼들을 가로로 묶은 레이아웃 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/buttonblue"
+                android:layout_width="150dp"
+                android:layout_height="42dp"
+                android:text="루틴 생성하기"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/button_blue"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginEnd="12dp"/>
+
+            <Button
+                android:id="@+id/buttonwhite"
+                android:layout_width="150dp"
+                android:layout_height="42dp"
+                android:text="루틴 시작하기"
+                android:textColor="@color/black"
+                android:background="@drawable/button_white"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <!-- 하단 설명 텍스트 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="루틴 생성하기란?"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#BDE9F1"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="반복하고 싶은 루틴을 직접 추가할 수 있습니다."
+                android:textSize="14sp"
+                android:textColor="#CCCCCC"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="루틴 시작하기란?"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#BDE9F1"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="다른 사람들이 올린 루틴을 보고 자신에게 맞는 루틴을 찾아 운동을 시작하세요."
+                android:textSize="14sp"
+                android:textColor="#CCCCCC"/>
+        </LinearLayout>
+
+    </LinearLayout>
 </FrameLayout>

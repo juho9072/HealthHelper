@@ -74,6 +74,10 @@
         <activity android:name=".FitnessLevelActivity"/>
         <activity android:name=".SettingActivity"/>
         <activity android:name=".BodyInfoActivity" />
+        <activity android:name=".RoutineUploadActivity" />
+        <activity android:name=".RoutineStartActivity" />
+        <activity android:name=".RoutineDetailActivity" />
+
 
 
     </application>
