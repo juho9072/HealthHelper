@@ -1,12 +1,176 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="#232429">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="홈"
-        android:textSize="24sp"
-        android:layout_gravity="center" />
-</FrameLayout>
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 랜덤 추천 루틴 -->
+        <TextView
+            android:id="@+id/randomRoutineTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif"
+            android:text="오늘의 추천 루틴"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="@drawable/bg_routine_card"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/randomRoutineText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="루틴 제목 표시"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:padding="4dp"
+            android:layout_marginEnd="8dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:background="@null" />
+
+            <Button
+                android:id="@+id/randomRoutineBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="바로가기"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_dark"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="8dp"/>
+        </LinearLayout>
+
+        <!-- 난이도별 추천 루틴 -->
+        <TextView
+            android:id="@+id/levelRoutineTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif"
+            android:text="난이도별 추천 루틴"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="@drawable/bg_routine_card"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/levelRoutineText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="루틴 제목 표시"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:padding="4dp"
+                android:layout_marginEnd="8dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:background="@null" />
+
+            <Button
+                android:id="@+id/levelRoutineBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="바로가기"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_dark"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="8dp"/>
+        </LinearLayout>
+        <!-- 운동 목표 제목 -->
+        <TextView
+            android:id="@+id/goalTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="운동 목표"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="24dp" />
+
+        <!-- 운동 목표 선택 그룹 -->
+        <RadioGroup
+            android:id="@+id/goalRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="-8dp"
+            >
+
+            <RadioButton
+                android:id="@+id/goalWeightLoss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="체중감량"
+                android:layout_marginEnd="8dp"
+                android:textColor="@android:color/white"
+                />
+
+            <RadioButton
+                android:id="@+id/goalBulkUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="벌크업"
+                android:layout_marginEnd="8dp"
+                android:textColor="@android:color/white" />
+
+            <RadioButton
+                android:id="@+id/goalMaintain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="체중유지"
+                android:layout_marginEnd="8dp"
+                android:textColor="@android:color/white" />
+        </RadioGroup>
+        <TextView
+            android:id="@+id/noticeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📢 공지사항"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/noticeContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="로딩 중..."
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:background="#333333"
+            android:padding="12dp"
+            android:backgroundTintMode="add"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+</ScrollView>
