@@ -77,6 +77,8 @@
         <activity android:name=".RoutineUploadActivity" />
         <activity android:name=".RoutineStartActivity" />
         <activity android:name=".RoutineDetailActivity" />
+        <activity android:name=".RoutineInputActivity" />
+        <activity android:name=".DetailViewActivity" />
 
 
 

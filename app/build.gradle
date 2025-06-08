@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.myapplication"
-        minSdk 24
+        minSdk 26
         targetSdk 35
         versionCode 1
         versionName "1.0"
@@ -46,6 +46,10 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
 
+    // 캘린더
+    implementation 'com.github.kizitonwose:CalendarView:1.0.4'
+    // 레이더 차트
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     // Google Sign-In
     implementation "com.google.android.gms:play-services-auth:21.2.0"
     // Volley
