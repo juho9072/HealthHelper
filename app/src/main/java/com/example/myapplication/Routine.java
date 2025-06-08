@@ -5,34 +5,24 @@ public class Routine {
     private String name;
     private String description;
     private String tag;
+    private String youtubeLink;
 
-    public Routine(int id, String name, String description, String tag) {
+    public Routine(int id, String name, String description, String tag, String youtubeLink) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.tag = tag;
+        this.youtubeLink = youtubeLink;
     }
 
-    // Getter 메서드들
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescription() { return description; }
 
-    public String getTag() {
-        return tag;
-    }
+    public String getTag() { return tag; }
 
-    // (Optional) toString()
-    @Override
-    public String toString() {
-        return name + " - " + tag;
-    }
+    public String getYoutubeLink() {return youtubeLink;}
+
 }

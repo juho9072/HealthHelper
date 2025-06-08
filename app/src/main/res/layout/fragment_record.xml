@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="#232429">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Month"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
             android:paddingBottom="8dp" />
@@ -30,13 +31,13 @@
             android:gravity="center"
             android:layout_marginBottom="8dp">
 
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="일" android:textColor="#FF0000" android:textSize="14sp" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:text="월" android:textSize="14sp" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:text="화" android:textSize="14sp" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:text="수" android:textSize="14sp" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="목" android:textSize="14sp" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="금" android:textSize="14sp" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:text="토" android:textColor="#0000FF" android:textSize="14sp" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="일" android:textColor="#FFCCCC" android:textSize="14sp" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:text="월" android:textColor="#FFFFFF" android:textSize="14sp" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:text="화" android:textColor="#FFFFFF" android:textSize="14sp" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:text="수" android:textColor="#FFFFFF" android:textSize="14sp" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="목" android:textColor="#FFFFFF" android:textSize="14sp" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="금" android:textColor="#FFFFFF" android:textSize="14sp" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:text="토" android:textColor="#CCCCFF" android:textSize="14sp" />
         </LinearLayout>
 
         <!-- 캘린더 -->
@@ -54,42 +55,13 @@
                 app:cv_dayViewResource="@layout/calendar_day_layout" />
         </FrameLayout>
 
-
-
-        <!-- 운동 균형 + 기간 선택 라벨 및 스피너 -->
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="8dp">
-
-            <!-- 운동 균형 -->
-
-            <!-- '기간' 텍스트 -->
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="운동 균형"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="기간"
-                android:textSize="14sp"
-                android:layout_marginEnd="4dp" />
-
-            <!-- 스피너 -->
-            <Spinner
-                android:id="@+id/periodSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:text="운동 균형"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <!-- 레이더 차트 -->
         <com.github.mikephil.charting.charts.RadarChart
@@ -97,6 +69,39 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="8dp" />
+
+        <RadioGroup
+            android:id="@+id/periodButtonGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/period_button_group_background"
+            android:padding="4dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/btnPeriod1Week"
+                style="@style/PeriodButton"
+                android:text="1주"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/btnPeriod1Month"
+                style="@style/PeriodButton"
+                android:text="1달" />
+
+            <RadioButton
+                android:id="@+id/btnPeriod1Year"
+                style="@style/PeriodButton"
+                android:text="1년" />
+
+            <RadioButton
+                android:id="@+id/btnPeriodAll"
+                style="@style/PeriodButton"
+                android:text="전체" />
+        </RadioGroup>
+
 
     </LinearLayout>
 </FrameLayout>

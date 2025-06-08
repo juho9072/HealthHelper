@@ -11,7 +11,6 @@
   783907667363-llpqqdrei5ts5c8l191eskcg2n9ahgvc.apps.googleusercontent.com</string>
 
     <!-- 카카오 네이티브 앱 키 -->
-
     <string name="kakao_native_app_key">67863ba4688d4a947e7874d248ebb770</string>
 
     <!-- 마이페이지 설정-->
@@ -39,5 +38,6 @@
         <item>어깨</item>
         <item>하체</item>
     </string-array>
+
 
 </resources>
