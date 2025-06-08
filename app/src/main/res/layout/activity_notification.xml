@@ -148,7 +148,33 @@
                 android:checked="true"/>
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="문의"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:paddingTop="18dp"
+            android:paddingBottom="8dp"/>
 
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="문의 답변 알림"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"/>
+            <Switch
+                android:id="@+id/switch_inquiry_answer_alert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"/>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

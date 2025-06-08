@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -38,7 +37,6 @@ import com.kizitonwose.calendarview.ui.ViewContainer;
 
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;

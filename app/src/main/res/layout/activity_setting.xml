@@ -232,6 +232,18 @@
                 android:checked="true" />
         </LinearLayout>
         <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#333"/>
+
+        <TextView
+            android:id="@+id/text_contact_us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="문의하기"
+            android:textColor="#00BCD4"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
 </ScrollView>
 

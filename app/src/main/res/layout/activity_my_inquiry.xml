@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#232429">
+
+    <TextView
+        android:id="@+id/text_inquiry_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="나의 1:1 문의 내역"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="56dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="12dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_inquiry"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btn_write_inquiry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문의 작성하기"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_blue"
+        android:layout_marginBottom="32dp"/>
+</LinearLayout>

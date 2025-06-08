@@ -1,13 +1,16 @@
 plugins {
-    alias(libs.plugins.android.application)
-    id("org.jetbrains.kotlin.android") version "1.8.21"
-    id 'com.google.gms.google-services' apply true
-
-
-
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
 }
 
 android {
+    configurations.all {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+        exclude group: 'com.android.support'
+    }
+
     namespace 'com.example.myapplication'
     compileSdk 35
 
@@ -33,6 +36,7 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
+        coreLibraryDesugaringEnabled true
     }
 }
 
@@ -52,8 +56,16 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     // Google Sign-In
     implementation "com.google.android.gms:play-services-auth:21.2.0"
+
     // Volley
     implementation "com.android.volley:volley:1.2.1"
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.activity:activity:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
     implementation 'com.google.firebase:firebase-auth:23.0.0'
     // Kotlin stdlib: 카탈로그 대신 직접 버전 명시
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.21"

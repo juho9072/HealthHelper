@@ -129,7 +129,7 @@
                 android:textColor="#FFFFFF"
                 android:layout_weight="1"
                 android:checked="true" />
-
+    
             <RadioButton
                 android:id="@+id/genderMan"
                 android:layout_width="0dp"
