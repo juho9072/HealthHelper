@@ -1,0 +1,270 @@
+Index: app/src/main/java/com/example/myapplication/RoutineAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myapplication;\n\n<<<<<<< HEAD\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.TextView;\n\nimport androidx.annotation.NonNull;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport com.example.myapplication.R;\nimport com.example.myapplication.Routine;\n\nimport java.util.List;\n\npublic class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineViewHolder> {\n\n    public interface OnRoutineClickListener {\n        void onRoutineClick(Routine routine);\n    }\n\n    private List<Routine> routineList;\n    private OnRoutineClickListener listener;\n\n    public RoutineAdapter(List<Routine> routineList, OnRoutineClickListener listener) {\n        this.routineList = routineList;\n        this.listener = listener;\n    }\n\n    @NonNull\n    @Override\n    public RoutineViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\n        View view = LayoutInflater.from(parent.getContext())\n                .inflate(R.layout.item_routine, parent, false);\n        return new RoutineViewHolder(view);\n    }\n\n    @Override\n    public void onBindViewHolder(@NonNull RoutineViewHolder holder, int position) {\n        Routine routine = routineList.get(position);\n        holder.bind(routine);\n    }\n\n    @Override\n    public int getItemCount() {\n        return routineList.size();\n    }\n\n    class RoutineViewHolder extends RecyclerView.ViewHolder {\n        TextView routineNameText, routineTagText, routineDescText;\n\n        public RoutineViewHolder(@NonNull View itemView) {\n            super(itemView);\n            routineNameText = itemView.findViewById(R.id.routineNameText);\n            routineTagText = itemView.findViewById(R.id.routineTagText);\n            routineDescText = itemView.findViewById(R.id.routineDescText);\n        }\n\n        public void bind(Routine routine) {\n            routineNameText.setText(routine.getName());\n            routineTagText.setText(\"#\" + routine.getTag());\n            routineDescText.setText(routine.getDescription());\n\n            itemView.setOnClickListener(v -> {\n                if (listener != null) {\n                    listener.onRoutineClick(routine);\n                }\n            });\n        }\n    }\n}\n=======\nimport android.app.Activity;\nimport android.content.Context;\nimport android.content.Intent;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.BaseAdapter;\nimport android.widget.ImageView;\nimport android.widget.TextView;\n\nimport com.bumptech.glide.Glide;\n\nimport java.util.ArrayList;\n\npublic class RoutineAdapter extends BaseAdapter {\n    private Context context;\n    private ArrayList<RoutineItem> routines;\n\n    public RoutineAdapter(Context context, ArrayList<RoutineItem> routines) {\n        this.context = context;\n        this.routines = routines;\n    }\n\n    @Override\n    public int getCount() {\n        return routines.size();\n    }\n\n    @Override\n    public Object getItem(int position) {\n        return routines.get(position);\n    }\n\n    @Override\n    public long getItemId(int position) {\n        return position;\n    }\n\n    @Override\n    public View getView(int position, View view, ViewGroup parent) {\n        if (view == null) {\n            view = LayoutInflater.from(context).inflate(R.layout.routine_list_item, parent, false);\n        }\n\n        TextView title = view.findViewById(R.id.title);\n        ImageView thumbnail = view.findViewById(R.id.thumbnail);\n\n        RoutineItem item = routines.get(position);\n        title.setText(item.title);\n\n        Glide.with(context).load(item.thumbnailUrl).into(thumbnail);\n\n        // 항목 클릭 시 상세 화면으로 이동\n        view.setOnClickListener(v -> {\n            Intent intent = new Intent(context, RoutineDetailActivity.class);\n            intent.putExtra(\"title\", item.title);\n            intent.putExtra(\"link\", item.youtubeLink); // 유튜브 원본 링크 전달\n            ((Activity) context).startActivity(intent); // context를 Activity로 캐스팅\n        });\n\n        return view;\n    }\n}\n>>>>>>> main\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myapplication/RoutineAdapter.java b/app/src/main/java/com/example/myapplication/RoutineAdapter.java
+--- a/app/src/main/java/com/example/myapplication/RoutineAdapter.java	(revision a52ba0fdc07dafcca21ca1a4ea0abddb6f6172e0)
++++ b/app/src/main/java/com/example/myapplication/RoutineAdapter.java	(date 1749386124389)
+@@ -1,76 +1,6 @@
+ package com.example.myapplication;
+ 
+-<<<<<<< HEAD
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-import android.widget.TextView;
+-
+-import androidx.annotation.NonNull;
+-import androidx.recyclerview.widget.RecyclerView;
+-
+-import com.example.myapplication.R;
+-import com.example.myapplication.Routine;
+-
+-import java.util.List;
+ 
+-public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineViewHolder> {
+-
+-    public interface OnRoutineClickListener {
+-        void onRoutineClick(Routine routine);
+-    }
+-
+-    private List<Routine> routineList;
+-    private OnRoutineClickListener listener;
+-
+-    public RoutineAdapter(List<Routine> routineList, OnRoutineClickListener listener) {
+-        this.routineList = routineList;
+-        this.listener = listener;
+-    }
+-
+-    @NonNull
+-    @Override
+-    public RoutineViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+-        View view = LayoutInflater.from(parent.getContext())
+-                .inflate(R.layout.item_routine, parent, false);
+-        return new RoutineViewHolder(view);
+-    }
+-
+-    @Override
+-    public void onBindViewHolder(@NonNull RoutineViewHolder holder, int position) {
+-        Routine routine = routineList.get(position);
+-        holder.bind(routine);
+-    }
+-
+-    @Override
+-    public int getItemCount() {
+-        return routineList.size();
+-    }
+-
+-    class RoutineViewHolder extends RecyclerView.ViewHolder {
+-        TextView routineNameText, routineTagText, routineDescText;
+-
+-        public RoutineViewHolder(@NonNull View itemView) {
+-            super(itemView);
+-            routineNameText = itemView.findViewById(R.id.routineNameText);
+-            routineTagText = itemView.findViewById(R.id.routineTagText);
+-            routineDescText = itemView.findViewById(R.id.routineDescText);
+-        }
+-
+-        public void bind(Routine routine) {
+-            routineNameText.setText(routine.getName());
+-            routineTagText.setText("#" + routine.getTag());
+-            routineDescText.setText(routine.getDescription());
+-
+-            itemView.setOnClickListener(v -> {
+-                if (listener != null) {
+-                    listener.onRoutineClick(routine);
+-                }
+-            });
+-        }
+-    }
+-}
+-=======
+ import android.app.Activity;
+ import android.content.Context;
+ import android.content.Intent;
+@@ -134,4 +64,3 @@
+         return view;
+     }
+ }
+->>>>>>> main
+Index: app/src/main/java/com/example/myapplication/RoutineDialog.java
+===================================================================
+diff --git a/app/src/main/java/com/example/myapplication/RoutineDialog.java b/app/src/main/java/com/example/myapplication/RoutineDialog.java
+deleted file mode 100644
+--- a/app/src/main/java/com/example/myapplication/RoutineDialog.java	(revision a52ba0fdc07dafcca21ca1a4ea0abddb6f6172e0)
++++ /dev/null	(revision a52ba0fdc07dafcca21ca1a4ea0abddb6f6172e0)
+@@ -1,171 +0,0 @@
+-package com.example.myapplication;
+-
+-import com.android.volley.Request;
+-import com.android.volley.RequestQueue;
+-import com.android.volley.toolbox.StringRequest;
+-import com.android.volley.toolbox.Volley;
+-
+-import android.app.Dialog;
+-import android.app.AlertDialog;
+-import android.os.Bundle;
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.widget.AdapterView;
+-import android.widget.ArrayAdapter;
+-import android.widget.Spinner;
+-
+-import androidx.annotation.Nullable;
+-import androidx.fragment.app.DialogFragment;
+-import android.widget.Toast;
+-import androidx.recyclerview.widget.LinearLayoutManager;
+-import androidx.recyclerview.widget.RecyclerView;
+-
+-import androidx.appcompat.widget.SearchView;
+-
+-import java.util.HashMap;
+-import java.util.Map;
+-import java.util.ArrayList;
+-import java.util.List;
+-
+-public class RoutineDialog extends DialogFragment {
+-    private int selectedRoutineId = -1;
+-
+-    private Spinner tagSpinner;
+-    private SearchView searchView;
+-    private RecyclerView routineRecyclerView;
+-    private RoutineAdapter adapter;
+-    private List<Routine> routineList = new ArrayList<>();
+-    private List<Routine> filteredList = new ArrayList<>();
+-
+-    private String[] tags = {"전체", "이두", "삼두", "등", "가슴", "하체", "어깨", "코어", "유산소"};
+-
+-    // setRoutineList는 리스트만 저장
+-    public void setRoutineList(List<Routine> routines) {
+-        this.routineList = routines;
+-    }
+-
+-    // 루틴 선택 후 호출될 콜백 인터페이스
+-    public interface OnRoutineSelectedListener {
+-        void onRoutineSelected(String selectedDate, int routineId);
+-    }
+-
+-    private OnRoutineSelectedListener routineSelectedListener;
+-
+-    public void setOnRoutineSelectedListener(OnRoutineSelectedListener listener) {
+-        this.routineSelectedListener = listener;
+-    }
+-
+-
+-    @Override
+-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+-        LayoutInflater inflater = requireActivity().getLayoutInflater();
+-        View view = inflater.inflate(R.layout.routine_selection_dialog, null);
+-
+-        tagSpinner = view.findViewById(R.id.tagSpinner);
+-        searchView = view.findViewById(R.id.searchView);
+-        routineRecyclerView = view.findViewById(R.id.routineRecyclerView);
+-
+-        // Spinner 세팅
+-        ArrayAdapter<String> tagAdapter = new ArrayAdapter<>(getContext(),
+-                android.R.layout.simple_spinner_item, tags);
+-        tagAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+-        tagSpinner.setAdapter(tagAdapter);
+-
+-        // RecyclerView 세팅
+-// 루틴 어댑터 설정 (수정됨)
+-        adapter = new RoutineAdapter(filteredList, new RoutineAdapter.OnRoutineClickListener() {
+-            @Override
+-            public void onRoutineClick(Routine routine) {
+-                selectedRoutineId = routine.getId();  // 선택된 루틴 ID 저장
+-                String selectedDate = getArguments().getString("selectedDate");
+-
+-                // 루틴 서버에 저장
+-                RequestQueue queue = Volley.newRequestQueue(requireContext());
+-                String url = "https://healthhelper.mycafe24.com/insert_routine_test.php";
+-
+-                StringRequest request = new StringRequest(Request.Method.POST, url,
+-                        response -> {
+-                            Toast.makeText(getContext(), "루틴 저장 완료!", Toast.LENGTH_SHORT).show();
+-
+-                            // 루틴 선택 콜백으로 전달 (한 번만)
+-                            if (routineSelectedListener != null) {
+-                                routineSelectedListener.onRoutineSelected(selectedDate, selectedRoutineId);
+-                            }
+-
+-                            // 캘린더에 반영
+-                            if (getParentFragment() instanceof RecordFragment) {
+-                                ((RecordFragment) getParentFragment()).addRoutineDateToCalendar(selectedDate);
+-                            }
+-
+-                            dismiss();  // 다이얼로그 닫기
+-                        },
+-                        error -> {
+-                            Toast.makeText(getContext(), "저장 실패: " + error.toString(), Toast.LENGTH_SHORT).show();
+-                        }) {
+-                    @Override
+-                    protected Map<String, String> getParams() {
+-                        Map<String, String> params = new HashMap<>();
+-                        params.put("date", selectedDate);
+-                        params.put("routine_id", String.valueOf(selectedRoutineId));
+-                        return params;
+-                    }
+-                };
+-
+-                queue.add(request);
+-            }
+-        });
+-
+-        routineRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+-        routineRecyclerView.setAdapter(adapter);
+-
+-        // Spinner 이벤트
+-        tagSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+-            @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+-                filterRoutine();
+-            }
+-
+-            @Override public void onNothingSelected(AdapterView<?> parent) {}
+-        });
+-
+-        // SearchView 이벤트
+-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+-            @Override public boolean onQueryTextSubmit(String query) { return false; }
+-            @Override public boolean onQueryTextChange(String newText) {
+-                filterRoutine();
+-                return true;
+-            }
+-        });
+-
+-        builder.setView(view)
+-                .setTitle("루틴 선택")
+-                .setNegativeButton("취소", null);
+-
+-        // 여기서만 filterRoutine() 호출
+-        filterRoutine();
+-
+-        return builder.create();
+-    }
+-
+-    private void filterRoutine() {
+-        if (tagSpinner == null || searchView == null) return; // 안전성 강화
+-
+-        String selectedTag = tagSpinner.getSelectedItem().toString();
+-        String keyword = searchView.getQuery().toString().toLowerCase();
+-
+-        filteredList.clear();
+-        for (Routine r : routineList) {
+-            boolean matchTag = selectedTag.equals("전체") || r.getTag().equals(selectedTag);
+-            boolean matchKeyword = r.getName().toLowerCase().contains(keyword);
+-            if (matchTag && matchKeyword) {
+-                filteredList.add(r);
+-            }
+-        }
+-        adapter.notifyDataSetChanged();
+-    }
+-    public int getSelectedRoutineId() {
+-        return selectedRoutineId;
+-    }
+-
+-
+-}
