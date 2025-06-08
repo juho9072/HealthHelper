@@ -9,8 +9,13 @@
         <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
         <option name="modules">
           <set>
+<<<<<<< Updated upstream
             <option value="$PROJECT_DIR$/../../캡스톤/HealthHelper" />
             <option value="$PROJECT_DIR$/../../캡스톤/HealthHelper/app" />
+=======
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+>>>>>>> Stashed changes
           </set>
         </option>
       </GradleProjectSettings>

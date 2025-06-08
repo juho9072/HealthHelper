@@ -50,7 +50,7 @@
                 android:id="@+id/btn_go_fitness"
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/button_white"
                 android:layout_marginTop="6dp"
                 android:text="운동 수준 설정"
                 android:textColor="@android:color/black"
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/button_white"
                 android:padding="10dp"
                 android:text="pw 변경"
                 android:textSize="16sp" />
@@ -105,7 +105,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/button_white"
                 android:padding="10dp"
                 android:text="회원 탈퇴"
                 android:textSize="16sp" />
@@ -234,10 +234,20 @@
         <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#333"/>
 
         <TextView
+            android:id="@+id/text_inquiry_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="문의가 필요하신가요?"
+            android:textColor="#DDDDDD"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:paddingTop="24dp"
+            android:paddingBottom="4dp" />
+        <TextView
             android:id="@+id/text_contact_us"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="문의하기"
+            android:text="1대1 문의하기"
             android:textColor="#00BCD4"
             android:padding="16dp"
             android:textSize="16sp"
