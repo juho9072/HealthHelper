@@ -57,9 +57,10 @@ public class RoutineStartActivity extends AppCompatActivity implements RoutineAd
                     JSONObject obj = jsonArray.getJSONObject(i);
                     String name = obj.getString("title");
                     String tag = "유튜브 루틴";
-                    String desc = obj.getString("link"); // 유튜브 링크를 설명처럼 사용 (또는 변경 가능)
+                    String link = obj.getString("link");
+                    String desc = link;
 
-                    routineList.add(new Routine(i, name, desc, tag));
+                    routineList.add(new Routine(i, name, desc, tag, link));
                 }
 
                 runOnUiThread(() -> adapter.notifyDataSetChanged());
