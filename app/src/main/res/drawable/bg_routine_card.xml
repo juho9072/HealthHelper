@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="#2E2F33"/> <!-- 전체 박스 배경 -->
+    <corners android:radius="16dp" />
+</shape>

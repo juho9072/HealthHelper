@@ -40,7 +40,8 @@
     <Button
         android:id="@+id/btn_change"
         android:text="변경"
-        android:backgroundTint="#2196f3"
+        android:background="@drawable/button_blue"
+        android:textSize="18sp"
         android:textColor="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

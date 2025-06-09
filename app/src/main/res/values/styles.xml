@@ -5,7 +5,18 @@
         <item name="android:textColorPrimary">#FFFFFF</item>
         <item name="android:statusBarColor">#232429</item>
         <item name="android:windowLightStatusBar">false</item>
+    </style>
 
+    <style name="PeriodButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/period_button_selector</item>
+        <item name="android:textColor">@drawable/period_button_text_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">4dp</item>
     </style>
 
 
