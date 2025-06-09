@@ -111,7 +111,7 @@ public class RoutineInputActivity extends AppCompatActivity {
     }
 
     private void loadRoutinesFromServer() {
-        String url = "https://healthhelper.mycafe24.com/get_routines.php";
+        String url = "https://healthhelper.mycafe24.com/record_page_get_routines.php";
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 response -> {

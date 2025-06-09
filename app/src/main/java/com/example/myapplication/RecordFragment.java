@@ -24,7 +24,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.RadarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.RadarData;
 import com.github.mikephil.charting.data.RadarDataSet;
 import com.github.mikephil.charting.data.RadarEntry;
@@ -37,12 +42,16 @@ import com.kizitonwose.calendarview.ui.ViewContainer;
 
 
 import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import kotlin.Unit;
@@ -55,6 +64,8 @@ public class RecordFragment extends Fragment {
     private ActivityResultLauncher<Intent> routineInputLauncher;
     private Button btn1Week, btn1Month, btn1Year, btnAll;
     private RadarChart radarChart;
+    private final Map<String, JSONObject> inbodyDataMap = new HashMap<>();
+    private View rootView;
 
 
 
@@ -249,6 +260,7 @@ public class RecordFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        rootView = view;
         btn1Week = view.findViewById(R.id.btnPeriod1Week);
         btn1Month = view.findViewById(R.id.btnPeriod1Month);
         btn1Year = view.findViewById(R.id.btnPeriod1Year);
@@ -272,6 +284,7 @@ public class RecordFragment extends Fragment {
                 result -> {
                     if (result.getResultCode() == RESULT_OK) {
                         loadMarkedDates();  // 저장 후 달력 업데이트
+                        fetchInbodyDataForLast7Days();
                     }
                 }
         );
@@ -324,6 +337,8 @@ public class RecordFragment extends Fragment {
         loadMarkedDates();
         btn1Week.setSelected(true);
         fetchDataForPeriod("1주");
+        fetchInbodyDataForLast7Days();
+
     }
 
     private void checkDataAndNavigate(LocalDate date) {
@@ -398,5 +413,122 @@ public class RecordFragment extends Fragment {
 
         queue.add(request);
     }
+
+    private void drawInbodyLineChart() {
+        LineChart lineChart = rootView.findViewById(R.id.lineChart);
+        ArrayList<Entry> weightEntries = new ArrayList<>();
+        ArrayList<Entry> muscleEntries = new ArrayList<>();
+        ArrayList<Entry> fatEntries = new ArrayList<>();
+        ArrayList<Entry> scoreEntries = new ArrayList<>();
+        ArrayList<String> xLabels = new ArrayList<>();
+
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd");
+
+        for (int i = 6; i >= 0; i--) {
+            LocalDate date = today.minusDays(i);
+            String formatted = date.format(formatter);
+            xLabels.add(formatted);
+
+            JSONObject data = inbodyDataMap.getOrDefault(date.toString(), null);
+            if (data != null) {
+                weightEntries.add(new Entry(6 - i, (float) data.optDouble("weight", 0)));
+                muscleEntries.add(new Entry(6 - i, (float) data.optDouble("muscle", 0)));
+                fatEntries.add(new Entry(6 - i, (float) data.optDouble("fat", 0)));
+                scoreEntries.add(new Entry(6 - i, (float) data.optDouble("score", 0)));
+            } else {
+                weightEntries.add(new Entry(6 - i, 0));
+                muscleEntries.add(new Entry(6 - i, 0));
+                fatEntries.add(new Entry(6 - i, 0));
+                scoreEntries.add(new Entry(6 - i, 0));
+            }
+        }
+
+        LineDataSet weightSet = new LineDataSet(weightEntries, "체중");
+        weightSet.setColor(Color.parseColor("#FF6F61"));
+        weightSet.setCircleColor(Color.parseColor("#FF6F61"));
+
+        LineDataSet muscleSet = new LineDataSet(muscleEntries, "골격근량");
+        muscleSet.setColor(Color.parseColor("#6FCF97"));
+        muscleSet.setCircleColor(Color.parseColor("#6FCF97"));
+
+        LineDataSet fatSet = new LineDataSet(fatEntries, "체지방량");
+        fatSet.setColor(Color.parseColor("#56CCF2"));
+        fatSet.setCircleColor(Color.parseColor("#56CCF2"));
+
+        LineDataSet scoreSet = new LineDataSet(scoreEntries, "인바디 점수");
+        scoreSet.setColor(Color.parseColor("#F2994A"));
+        scoreSet.setCircleColor(Color.parseColor("#F2994A"));
+
+        weightSet.setLineWidth(2f);
+        weightSet.setCircleRadius(4f);
+        weightSet.setDrawValues(false);
+        weightSet.enableDashedLine(10f, 10f, 0f);
+
+        muscleSet.setLineWidth(2f);
+        muscleSet.setCircleRadius(4f);
+        muscleSet.setDrawValues(false);
+        muscleSet.enableDashedLine(10f, 10f, 0f);
+
+        fatSet.setLineWidth(2f);
+        fatSet.setCircleRadius(4f);
+        fatSet.setDrawValues(false);
+        fatSet.enableDashedLine(10f, 10f, 0f);
+
+        scoreSet.setLineWidth(2f);
+        scoreSet.setCircleRadius(4f);
+        scoreSet.setDrawValues(false);
+        scoreSet.enableDashedLine(10f, 10f, 0f);
+
+        LineData lineData = new LineData(weightSet, muscleSet, fatSet, scoreSet);
+        lineChart.setData(lineData);
+
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(xLabels));
+        xAxis.setGranularity(1f);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextColor(Color.WHITE);
+
+        lineChart.getAxisLeft().setTextColor(Color.WHITE);
+        lineChart.getAxisRight().setTextColor(Color.WHITE);
+
+        lineChart.getLegend().setTextColor(Color.WHITE);
+
+        lineChart.getDescription().setEnabled(false);
+        lineChart.invalidate();
+    }
+
+    private void fetchInbodyDataForLast7Days() {
+        LocalDate today = LocalDate.now();
+        LocalDate sevenDaysAgo = today.minusDays(6);
+        String startDate = sevenDaysAgo.toString(); // yyyy-MM-dd
+        String endDate = today.toString();
+
+        String url = "https://healthhelper.mycafe24.com/get_inbody_last_7days.php?start=" + startDate + "&end=" + endDate;
+
+        RequestQueue queue = Volley.newRequestQueue(requireContext());
+        StringRequest request = new StringRequest(Request.Method.GET, url,
+                response -> {
+                    Log.d("InbodyAPI", "response: " + response);
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
+                        inbodyDataMap.clear();
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject obj = jsonArray.getJSONObject(i);
+                            String date = obj.getString("date");
+                            inbodyDataMap.put(date, obj);
+                        }
+                        drawInbodyLineChart();  // 데이터 받아온 후 차트 그리기
+                    } catch (Exception e) {
+                        Toast.makeText(getContext(), "인바디 데이터 파싱 오류", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> Toast.makeText(getContext(), "인바디 데이터 통신 실패", Toast.LENGTH_SHORT).show()
+        );
+
+        queue.add(request);
+    }
+
+
 
 }
