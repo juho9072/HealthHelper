@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RoutineDetailActivity extends AppCompatActivity {
 
@@ -31,14 +33,21 @@ public class RoutineDetailActivity extends AppCompatActivity {
 
     private double videoDuration = 0;
 
+    // ✅ 다양한 YouTube 링크 형식을 처리하여 videoId를 추출하는 함수
     private String extractYoutubeVideoId(String url) {
-        try {
-            if (url.contains("v=")) {
-                return url.substring(url.indexOf("v=") + 2).split("&")[0];
-            } else if (url.contains("youtu.be/")) {
-                return url.substring(url.lastIndexOf("/") + 1);
-            }
-        } catch (Exception ignored) {}
+        if (url == null || url.isEmpty()) return "";
+
+        Pattern[] patterns = new Pattern[]{
+                Pattern.compile("v=([\\w-]{11})"),              // watch?v=
+                Pattern.compile("youtu\\.be/([\\w-]{11})"),     // youtu.be/
+                Pattern.compile("embed/([\\w-]{11})")           // embed/
+        };
+
+        for (Pattern pattern : patterns) {
+            Matcher matcher = pattern.matcher(url);
+            if (matcher.find()) return matcher.group(1);
+        }
+
         return "";
     }
 
@@ -48,20 +57,25 @@ public class RoutineDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routine_detail);
 
+        // ✅ 링크 인텐트에서 받아오기
         String youtubeLink = getIntent().getStringExtra("link");
-        String videoId = extractYoutubeVideoId(youtubeLink);
+        String videoId = extractYoutubeVideoId(youtubeLink);  // ✅ 여기가 핵심 변경 포인트
 
+        // UI 초기화
         tvExpectedTime = findViewById(R.id.tvExpectedTime);
         tvRepeatProgress = findViewById(R.id.tvRepeatProgress);
         tvStartTime = findViewById(R.id.tvStartTime);
         tvEndTime = findViewById(R.id.tvEndTime);
         progressBar = findViewById(R.id.progressBar);
 
+        // WebView 설정
         webView = findViewById(R.id.youtubePlayer);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
         webView.setWebViewClient(new WebViewClient());
         webView.addJavascriptInterface(new WebAppInterface(), "Android");
 
+        // YouTube iFrame API HTML 코드 삽입
         String html = "<html><body style='margin:0'>" +
                 "<div id='player'></div>" +
                 "<script>" +
@@ -119,6 +133,7 @@ public class RoutineDetailActivity extends AppCompatActivity {
 
         webView.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null);
 
+        // 버튼 및 텍스트뷰 바인딩
         Button btnSpeedMinus = findViewById(R.id.btnSpeedMinus);
         Button btnSpeedPlus = findViewById(R.id.btnSpeedPlus);
         Button btnRepeatMinus = findViewById(R.id.btnRepeatMinus);
@@ -128,6 +143,7 @@ public class RoutineDetailActivity extends AppCompatActivity {
         TextView tvSpeedValue = findViewById(R.id.tvSpeedValue);
         TextView tvRepeatValue = findViewById(R.id.tvRepeatValue);
 
+        // 재생 속도 조절
         btnSpeedMinus.setOnClickListener(v -> {
             if (currentSpeed > 0.25f) {
                 currentSpeed -= 0.25f;
@@ -146,6 +162,7 @@ public class RoutineDetailActivity extends AppCompatActivity {
             }
         });
 
+        // 반복 횟수 조절
         btnRepeatMinus.setOnClickListener(v -> {
             if (currentRepeat > 1) {
                 currentRepeat--;
@@ -164,6 +181,7 @@ public class RoutineDetailActivity extends AppCompatActivity {
             }
         });
 
+        // 루틴 시작 시간 기록
         btnStart.setOnClickListener(v -> {
             startTime = System.currentTimeMillis();
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.KOREA);
@@ -171,6 +189,7 @@ public class RoutineDetailActivity extends AppCompatActivity {
             tvStartTime.setText("시작 시간: " + sdf.format(new Date(startTime)));
         });
 
+        // 루틴 종료 시간 기록
         btnEnd.setOnClickListener(v -> {
             long endTime = System.currentTimeMillis();
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.KOREA);
@@ -178,11 +197,13 @@ public class RoutineDetailActivity extends AppCompatActivity {
             tvEndTime.setText("종료 시간: " + sdf.format(new Date(endTime)));
         });
 
+        // 초기 값 설정
         tvSpeedValue.setText("1.00x");
         tvRepeatValue.setText("1회");
         tvRepeatProgress.setText("현재: 0 / 1회");
     }
 
+    // 예상 시간 계산 및 ProgressBar 설정
     private void updateExpectedTime() {
         if (videoDuration <= 0) return;
         double adjustedDuration = (videoDuration * currentRepeat) / currentSpeed;
@@ -192,6 +213,7 @@ public class RoutineDetailActivity extends AppCompatActivity {
         progressBar.setMax((int)adjustedDuration);
     }
 
+    // WebView에서 호출되는 JS 인터페이스
     private class WebAppInterface {
         @JavascriptInterface
         public void getDuration(double duration) {

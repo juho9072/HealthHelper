@@ -55,8 +55,8 @@ public class RoutineStartActivity extends AppCompatActivity implements RoutineAd
                 routineList.clear();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject obj = jsonArray.getJSONObject(i);
-                    String name = obj.getString("title");
-                    String tag = "유튜브 루틴";
+                    String name = obj.optString("title", "제목 없음");
+                    String tag = obj.optString("tag", "유튜브 루틴");
                     String link = obj.getString("link");
                     String desc = link;
 
