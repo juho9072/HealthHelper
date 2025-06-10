@@ -3,7 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:padding="16dp">
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    android:paddingTop="48dp"
+    android:background="#121212">
 
     <LinearLayout
         android:orientation="vertical"
@@ -15,7 +19,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="아이디 찾기"
+            android:textStyle="bold"
             android:textSize="16sp"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="8dp"/>
 
         <LinearLayout
@@ -30,13 +36,16 @@
                 android:layout_weight="1"
                 android:layout_height="48dp"
                 android:hint="이메일 입력"
-                android:inputType="textEmailAddress"/>
+                android:inputType="textEmailAddress"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"/>
 
             <Button
                 android:id="@+id/btn_check_duplicate"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="확인"
+                android:textColor="@color/black"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
 
@@ -52,7 +61,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="비밀번호찾기"
+            android:textStyle="bold"
             android:textSize="16sp"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="24dp"/>
 
         <!-- 이메일 입력 -->
@@ -62,6 +73,8 @@
             android:layout_height="48dp"
             android:hint="비밀번호 찾기용 이메일 입력"
             android:inputType="textEmailAddress"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#CCCCCC"
             android:layout_marginTop="4dp" />
 
         <!-- 인증번호 전송 버튼 -->
@@ -70,22 +83,28 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="인증번호 전송"
+            android:textColor="@color/black"
             android:layout_marginTop="8dp"/>
+
         <EditText
             android:id="@+id/edit_auth_code"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="인증번호 입력"
             android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#CCCCCC"
             android:layout_marginTop="8dp" />
 
-        <!-- ✅ 추가: 인증번호 확인 버튼 -->
+        <!-- 인증번호 확인 버튼 -->
         <Button
             android:id="@+id/btn_verify_auth"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="인증번호 확인"
+            android:textColor="@color/black"
             android:layout_marginTop="8dp"/>
+
         <!-- 새 비밀번호 입력 + 눈 버튼 -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,7 +119,9 @@
                 android:layout_height="48dp"
                 android:hint="새 비밀번호 입력"
                 android:inputType="textPassword"
-                android:padding="12dp"/>
+                android:padding="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"/>
 
             <ImageButton
                 android:id="@+id/btn_toggle_pw"
@@ -120,6 +141,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="확인"
+            android:textColor="@color/black"
             android:layout_marginTop="32dp"/>
     </LinearLayout>
 </ScrollView>

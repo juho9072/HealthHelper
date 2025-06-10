@@ -56,7 +56,7 @@ public class RoutineStartActivity extends AppCompatActivity implements RoutineAd
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject obj = jsonArray.getJSONObject(i);
                     String name = obj.getString("title");
-                    String tag = "유튜브 루틴";
+                    String tag = obj.getString("tag");
                     String link = obj.getString("link");
                     String desc = link;
 
@@ -79,7 +79,7 @@ public class RoutineStartActivity extends AppCompatActivity implements RoutineAd
         Intent intent = new Intent(this, RoutineDetailActivity.class);
         intent.putExtra("title", routine.getName());
         intent.putExtra("tag", routine.getTag());
-        intent.putExtra("desc", routine.getDescription()); // 링크가 들어갈 수도 있음
+        intent.putExtra("link", routine.getDescription()); // 링크가 들어갈 수도 있음
         startActivity(intent);
     }
 }
