@@ -59,6 +59,9 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.21'
     implementation 'com.kakao.sdk:v2-user:2.14.0'
     implementation 'com.kakao.sdk:v2-auth:2.14.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
 }
 
 

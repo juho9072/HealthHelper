@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RoutineDetailActivity extends AppCompatActivity {
 
@@ -24,21 +26,30 @@ public class RoutineDetailActivity extends AppCompatActivity {
     private int currentRepeat = 1;
     private int currentRepeatProgress = 0;
     private long startTime = 0;
+
     private Handler handler = new Handler();
+    private Runnable countdownRunnable;
 
     private TextView tvExpectedTime, tvRepeatProgress, tvStartTime, tvEndTime;
     private ProgressBar progressBar;
 
     private double videoDuration = 0;
+    private long remainingSeconds = 0;
 
     private String extractYoutubeVideoId(String url) {
-        try {
-            if (url.contains("v=")) {
-                return url.substring(url.indexOf("v=") + 2).split("&")[0];
-            } else if (url.contains("youtu.be/")) {
-                return url.substring(url.lastIndexOf("/") + 1);
-            }
-        } catch (Exception ignored) {}
+        if (url == null || url.isEmpty()) return "";
+
+        Pattern[] patterns = new Pattern[]{
+                Pattern.compile("v=([\\w-]{11})"),
+                Pattern.compile("youtu\\.be/([\\w-]{11})"),
+                Pattern.compile("embed/([\\w-]{11})")
+        };
+
+        for (Pattern pattern : patterns) {
+            Matcher matcher = pattern.matcher(url);
+            if (matcher.find()) return matcher.group(1);
+        }
+
         return "";
     }
 
@@ -59,10 +70,16 @@ public class RoutineDetailActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.youtubePlayer);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
         webView.setWebViewClient(new WebViewClient());
         webView.addJavascriptInterface(new WebAppInterface(), "Android");
 
-        String html = "<html><body style='margin:0'>" +
+        String html = "<html><head>" +
+                "<style>" +
+                "html, body { margin:0; padding:0; background-color:black; overflow:hidden; }" +
+                "#player { margin:0; padding:0; }" +
+                "</style>" +
+                "</head><body>" +
                 "<div id='player'></div>" +
                 "<script>" +
                 "var tag = document.createElement('script');" +
@@ -77,9 +94,10 @@ public class RoutineDetailActivity extends AppCompatActivity {
 
                 "function onYouTubeIframeAPIReady() {" +
                 "  player = new YT.Player('player', {" +
-                "    height: '200'," +
+                "    height: '100%'," +  // 수정
                 "    width: '100%'," +
                 "    videoId: '" + videoId + "'," +
+                "    playerVars: { 'rel': 0, 'modestbranding': 1 }," + // 추천 옵션
                 "    events: {" +
                 "      'onReady': onPlayerReady," +
                 "      'onStateChange': onPlayerStateChange" +
@@ -185,11 +203,34 @@ public class RoutineDetailActivity extends AppCompatActivity {
 
     private void updateExpectedTime() {
         if (videoDuration <= 0) return;
+
         double adjustedDuration = (videoDuration * currentRepeat) / currentSpeed;
-        int minutes = (int)(adjustedDuration / 60);
-        int seconds = (int)(adjustedDuration % 60);
+        remainingSeconds = (long) adjustedDuration;
+        progressBar.setMax((int) adjustedDuration);
+
+        updateRemainingTimeText();
+
+        if (countdownRunnable != null) {
+            handler.removeCallbacks(countdownRunnable);
+        }
+
+        countdownRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (remainingSeconds > 0) {
+                    remainingSeconds--;
+                    updateRemainingTimeText();
+                    handler.postDelayed(this, 1000);
+                }
+            }
+        };
+        handler.postDelayed(countdownRunnable, 1000);
+    }
+
+    private void updateRemainingTimeText() {
+        int minutes = (int) (remainingSeconds / 60);
+        int seconds = (int) (remainingSeconds % 60);
         tvExpectedTime.setText(String.format(Locale.KOREA, "예상 시간: %02d:%02d", minutes, seconds));
-        progressBar.setMax((int)adjustedDuration);
     }
 
     private class WebAppInterface {
@@ -201,13 +242,21 @@ public class RoutineDetailActivity extends AppCompatActivity {
 
         @JavascriptInterface
         public void updateProgress(double currentTime) {
-            runOnUiThread(() -> progressBar.setProgress((int)currentTime));
+            runOnUiThread(() -> progressBar.setProgress((int) currentTime));
         }
 
         @JavascriptInterface
         public void updateRepeat(int count) {
             currentRepeatProgress = count;
             runOnUiThread(() -> tvRepeatProgress.setText("현재: " + count + " / " + currentRepeat + "회"));
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (countdownRunnable != null) {
+            handler.removeCallbacks(countdownRunnable);
         }
     }
 }

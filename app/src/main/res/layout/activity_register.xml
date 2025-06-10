@@ -34,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회원가입"
+            android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:layout_gravity="center_horizontal"
@@ -60,15 +61,13 @@
                 android:layout_marginBottom="16dp" />
 
             <Button
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:background="@color/colorWarning"
-                android:text="중복 확인"
-                android:layout_gravity="center"
                 android:id="@+id/validateButton"
-                android:textColor="#FFFFFF" />
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/login_button"
+                android:text="중복확인"
+                android:textColor="#000000"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <RelativeLayout

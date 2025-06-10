@@ -85,11 +85,6 @@
         <activity android:name=".InquiryDetailActivity" />
         <activity android:name=".MyInquiryActivity" />
 
-
-
-
-
-
     </application>
 
 </manifest>
